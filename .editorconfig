@@ -2,7 +2,30 @@ root = true
 
 [*]
 charset = utf-8
-indent_style = tab
+indent_style = space
+indent_size = 4
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+# Trailing spaces in md used to differentiate line breaks and paragraphs
+[*.md]
+trim_trailing_whitespace = false
+
+# Reduce indentation in these very nested formats
+
+# XML Configuration Files
+[*.{xml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct}]
+indent_size = 2
+
+## JSON Files
+[*.{json,json5}]
+indent_size = 2
+
+## YAML Files
+[*.{yml,yaml}]
+indent_size = 2
