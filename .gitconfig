@@ -1,5 +1,19 @@
 [alias]
 
+	# common commands
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	df = diff
+	lg = log -p
+	cp = cherry-pick
+    mt = mergetool
+
+	# view todos in modified source
+	fixme = grep --heading --break --ignore-case -e 'FIX: *' -e 'FIXME: *'
+	todo = grep --heading --break --ignore-case -e 'TODO: *'
+
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
@@ -138,6 +152,7 @@
 	gpgsign = true
 
 [diff]
+	tool = smartsync-mac
 
 	# Detect copies as well as renames
 	renames = copies
@@ -147,15 +162,30 @@
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
 
+[difftool]
+	promt = false
+
+[difftool "smartsync-mac"]
+	cmd = '/Applications/SmartSynchronize/SmartSynchronize.app/Contents/MacOS/SmartSynchronize' "$LOCAL" "$REMOTE"
+
 [help]
 
 	# Automatically correct and execute mistyped commands
 	autocorrect = 1
 
 [merge]
+	tool = smartsync-mac
 
 	# Include summaries of merged commits in newly created merge commit messages
-	log = true
+	#log = true
+
+# based on https://www.syntevo.com/blog/?p=3701
+[mergetool "smartsync-mac"]
+	cmd = '/Applications/SmartSynchronize/SmartSynchronize.app/Contents/MacOS/SmartSynchronize' "$LOCAL" "$REMOTE" "$MERGED"
+	trustExitCode = false
+
+[pull]
+	rebase = true
 
 [push]
 
