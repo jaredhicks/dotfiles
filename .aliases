@@ -12,7 +12,7 @@ alias -- -="cd -"
 alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias w="cd ~/work"
 alias g="git"
 
 # Detect which `ls` flavor is in use
@@ -28,7 +28,8 @@ fi
 alias l="ls -lF ${colorflag}"
 
 # List all files colorized in long format, excluding . and ..
-alias la="ls -lAF ${colorflag}"
+alias la="ls -lAFh ${colorflag}"
+alias ll="ls -lAFh ${colorflag}"
 
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
