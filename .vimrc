@@ -3,16 +3,23 @@ set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Initialize some things
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Make Vim more useful
 set nocompatible
+
+" configure plugins with https://github.com/junegunn/vim-plug
+call plug#begin()
+Plug 'tpope/vim-sensible'
+call plug#end()
+
+
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
-" Enhance command-line completion
-set wildmenu
 " Allow cursor keys in insert mode
 set esckeys
-" Allow backspace in insert mode
-set backspace=indent,eol,start
 " Optimize for fast terminal connections
 set ttyfast
 " Add the g flag to search/replace by default
@@ -55,18 +62,12 @@ set list
 set hlsearch
 " Ignore case of searches
 set ignorecase
-" Highlight dynamically as pattern is typed
-set incsearch
-" Always show status line
-set laststatus=2
 " Enable mouse in all modes
 set mouse=a
 " Disable error bells
 set noerrorbells
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
-" Show the cursor position
-set ruler
 " Don’t show the intro message when starting Vim
 set shortmess=atI
 " Show the current mode
@@ -75,8 +76,6 @@ set showmode
 set title
 " Show the (partial) command as it’s being typed
 set showcmd
-" Start scrolling three lines before the horizontal window border
-set scrolloff=3
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
