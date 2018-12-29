@@ -10,7 +10,17 @@ set nocompatible
 call plug#begin()
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 
 
@@ -84,6 +94,9 @@ if !has('gui_running')
     endif
 endif
 colorscheme solarized
+
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
