@@ -9,6 +9,7 @@ set nocompatible
 " configure plugins with https://github.com/junegunn/vim-plug
 call plug#begin()
 Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -73,14 +74,11 @@ set showcmd
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " https://stackoverflow.com/a/9833425
-if $TERM == "xterm-256color"
+if ($TERM == "xterm-256color" || has('gui_vimr'))
     set t_Co=256
 endif
 
-
-" Use the Solarized Dark theme
-set background=dark
-if !has('gui_running')
+if (!has('gui_running') && !has('gui_vimr'))
     " Compatibility for Terminal
     let g:solarized_termtrans=1
 
@@ -93,10 +91,14 @@ if !has('gui_running')
         let g:solarized_termcolors=16
     endif
 endif
+
+" Use the Solarized Dark theme
+set background=dark
 colorscheme solarized
 
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -267,7 +269,9 @@ noremap Y y$
 
 " Allow cursor keys in insert mode. Not sure if this is best but fine
 " for now (https://www.johnhawthorn.com/2012/09/vi-escape-delays/)
-set esckeys
+if !has('nvim')
+    set esckeys
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
