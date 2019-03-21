@@ -1,0 +1,3 @@
+http_proxy=
+https_proxy=
+R_LIBS_USER='~/Library/R/3.x/library'
